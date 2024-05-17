@@ -5,8 +5,8 @@ import { createTheme } from "@mui/material/styles";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import Layout from "scenes";
-import Dashboard from "scenes";
+import Layout from "scenes/layout";
+import Dashboard from "scenes/dashboard";
 import { themeSettings } from "theme";
 
 function App() {
