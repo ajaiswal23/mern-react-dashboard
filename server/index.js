@@ -12,27 +12,39 @@ import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 
+// data import
+import User from "./models/User.js";
+import { dataUser } from "./data/index.js";
+
 // Config
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan);
+// app.use(morgan);
+// app.use(morgan("common"));
 app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
+app.use(cors("*"));
 
 // Routes
+
+app.get("/", (req, res) => res.send());
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
 
 // DB Connection
-const CONNECTION_URL = process.env.CONNECTION_URL;
+const CONNECTION_URL = process.env.MONGO_URL;
 const PORT = process.env.PORT || 5001;
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => app.listen(PORT), () => console.log("Server running on port: " + PORT)).catch((error) => console.log(error.message));
+  .then(() => {
+    app.listen(PORT),
+      // User.insertMany(dataUser),
+      console.log("Server running on port: " + PORT);
+  })
+  .catch((error) => console.log(error.message));

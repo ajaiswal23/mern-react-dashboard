@@ -100,14 +100,14 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
               />
             </Button>
-            <Menu
+            {/* <Menu
             // anchorEl={anchorEl}
             // open={isOpen}
             // onClose={handleClose}
             // anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             >
               <MenuItem>Log Out</MenuItem>
-            </Menu>
+            </Menu> */}
           </FlexBetween>
         </FlexBetween>
       </Toolbar>
