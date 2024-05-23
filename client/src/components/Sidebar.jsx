@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Divider,
@@ -19,7 +20,6 @@ import {
   ShoppingCartOutlined,
   Groups2Outlined,
   ReceiptLongOutlined,
-  PublicOutlined,
   PointOfSaleOutlined,
   TodayOutlined,
   CalendarMonthOutlined,
@@ -53,10 +53,6 @@ const navItems = [
     text: "Transactions",
     icon: <ReceiptLongOutlined />,
   },
-//   {
-//     text: "Geography",
-//     icon: <PublicOutlined />,
-//   },
   {
     text: "Sales",
     icon: null,
@@ -98,6 +94,7 @@ const Sidebar = ({
   setIsSidebarOpen,
   isNonMobile,
 }) => {
+  // console.log("🚀 ~ user:", user.name)
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
   const navigate = useNavigate();
@@ -107,8 +104,10 @@ const Sidebar = ({
     setActive(pathname.substring(1));
   }, [pathname]);
 
+  
+
   return (
-    <Box>
+    <Box component="nav">
       {isSidebarOpen && (
         <Drawer
           open={isSidebarOpen}
@@ -131,7 +130,7 @@ const Sidebar = ({
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
-                    Dashboard
+                    ADMINDASH
                   </Typography>
                 </Box>
                 {!isNonMobile && (
@@ -143,8 +142,6 @@ const Sidebar = ({
             </Box>
             <List>
               {navItems.map(({ text, icon }) => {
-
-                // When icon is null, it will represent a title in the sidebar.
                 if (!icon) {
                   return (
                     <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
@@ -193,7 +190,6 @@ const Sidebar = ({
               })}
             </List>
           </Box>
-          
 
           <Box position="absolute" bottom="2rem">
             <Divider />
@@ -213,13 +209,13 @@ const Sidebar = ({
                   fontSize="0.9rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  {/* {user.name} */} aditya
+                  {user.name}
                 </Typography>
                 <Typography
                   fontSize="0.8rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
-                  {/* {user.occupation} */} developer
+                  {user.occupation}
                 </Typography>
               </Box>
               <SettingsOutlined
@@ -230,11 +226,10 @@ const Sidebar = ({
               />
             </FlexBetween>
           </Box>
-
-          
         </Drawer>
       )}
     </Box>
   );
 };
+
 export default Sidebar;
