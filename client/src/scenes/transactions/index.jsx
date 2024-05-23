@@ -20,7 +20,7 @@ const Transactions = () => {
     sort: JSON.stringify(sort),
     search,
   });
-
+  const theme = useTheme();
   const columns = [
     {
       field: "_id",
@@ -57,7 +57,11 @@ const Transactions = () => {
       <Header title="TRANSACTIONS" subtitle="Entire list of transactions" />
       <Box
         height="80vh"
-        
+        sx={{
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: `${theme.palette.secondary[200]} !important`,
+          },
+        }}
       >
         <DataGrid
           loading={isLoading || !data}
@@ -74,10 +78,12 @@ const Transactions = () => {
           onPageChange={(newPage) => setPage(newPage)}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
           onSortModelChange={(newSortModel) => setSort(...newSortModel)}
-          components={{ Toolbar: DataGridCustomToolbar }}
-          componentsProps={{
-            toolbar: { searchInput, setSearchInput, setSearch },
-          }}
+          // components={{ Toolbar: DataGridCustomToolbar }}
+          // componentsProps={{
+          //   toolbar: { searchInput, setSearchInput, setSearch },
+          // }}
+          slots={{ toolbar: DataGridCustomToolbar }}
+          slotsProps={{ toolbar: { searchInput, setSearchInput, setSearch } }}
         />
       </Box>
     </Box>
