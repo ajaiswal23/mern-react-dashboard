@@ -14,7 +14,18 @@ import salesRoutes from "./routes/sales.js";
 
 // data import
 import User from "./models/User.js";
-import { dataUser } from "./data/index.js";
+import Product from "./models/Product.js";
+import ProductStat from "./models/ProductStat.js";
+import Transaction from "./models/Transaction.js";
+// import OverallStat from "./models/OverallStat.js";
+// import AffiliateStat from "./models/AffiliateStat.js";
+import {
+
+  dataProduct,
+  dataProductStat,
+  dataTransaction
+
+} from "./data/index.js";
 
 // Config
 dotenv.config();
@@ -45,6 +56,9 @@ mongoose
   .then(() => {
     app.listen(PORT),
       // User.insertMany(dataUser),
+      // Product.insertMany(dataProduct),
+      // ProductStat.insertMany(dataProductStat),
+      // Transaction.insertMany(dataTransaction),
       console.log("Server running on port: " + PORT);
   })
   .catch((error) => console.log(error.message));
