@@ -92,24 +92,25 @@ const BreakdownChart = ({ isDashboard = false }) => {
         }}
         legends={[
           {
-            anchor: "bottom",
-            direction: "row",
+            anchor: "bottom-left",
+            direction: "column",
             justify: false,
-            translateX: isDashboard ? 20 : 0,
-            translateY: isDashboard ? 50 : 56,
+            translateX:  -40,
+            translateY: 75,
             itemsSpacing: 0,
-            itemWidth: 85,
-            itemHeight: 18,
+            itemWidth: 200,
+            itemHeight: 20,
             itemTextColor: "#999",
             itemDirection: "left-to-right",
             itemOpacity: 1,
-            symbolSize: 18,
+            symbolSize: 12,
             symbolShape: "circle",
+
             effects: [
               {
                 on: "hover",
                 style: {
-                  itemTextColor: theme.palette.primary[500],
+                  itemTextColor: "#000",
                 },
               },
             ],
@@ -120,7 +121,7 @@ const BreakdownChart = ({ isDashboard = false }) => {
         position="absolute"
         top="50%"
         left="50%"
-        color={theme.palette.secondary[400]}
+        color={theme.palette.secondary[-400]}
         textAlign="center"
         pointerEvents="none"
         sx={{
